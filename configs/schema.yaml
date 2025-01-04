@@ -1,0 +1,31 @@
+columns:
+  - id: int
+  - full_name: str
+  - age: int
+  - gender: category
+  - device_type: category
+  - ad_position: category
+  - browsing_history: category
+  - time_of_day: category
+  - click: int
+
+numerical_columns:
+  - age
+  - click
+
+categorical_columns:
+  - gender
+  - device_type
+  - ad_position
+  - browsing_history
+  - time_of_day
+
+drop_columns:
+  - full_name
+
+# for data transformation
+num_features:
+  - age
+
+mm_columns:
+  - age
