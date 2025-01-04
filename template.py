@@ -49,7 +49,7 @@ list_of_files = [
     # Testing and documentation
     f"{project_name}/tests/__init__.py",
     f"{project_name}/tests/test_pipeline.py",
-    f"{project_name}/docs/README.md",  
+    f"{project_name}/docs/Project_flow.md",  
 
     # Root-level files
     "app.py",
