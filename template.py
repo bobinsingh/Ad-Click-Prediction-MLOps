@@ -14,12 +14,14 @@ list_of_files = [
     f"{project_name}/components/model_evaluator.py",  
     f"{project_name}/components/model_deployment.py",  
     f"{project_name}/config/__init__.py",
-    f"{project_name}/config/db_config.py",  
-    f"{project_name}/config/cloud_config.py",  
+    f"{project_name}/config/mongo_db_config.py",  
+    f"{project_name}/config/mongo_db_handler.py",  
 
     # Cloud and storage
     f"{project_name}/cloud/__init__.py",
-    f"{project_name}/cloud/aws_handler.py", 
+    f"{project_name}/cloud/aws_handler.py",
+    f"{project_name}/cloud/aws_storage.py",
+    f"{project_name}/cloud/aws_config.py", 
     f"{project_name}/data/__init__.py",  
     f"{project_name}/data/proj_data_handler.py",  
 
