@@ -1,3 +1,8 @@
+logs/
+artifact/
+Project_flow.md
+connection.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
