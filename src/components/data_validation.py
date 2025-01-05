@@ -2,7 +2,7 @@ from src.logging import logging
 from src.exceptions import MyException
 from src.entities.config_entity import DataValidationConfig
 from src.entities.artifact_entity import DataValidationArtifact, DataIngestionArtifact 
-from src.utils.helpers import read_yaml_file
+from src.utils.helpers import read_yaml_file, read_data
 from src.constants import SCHEMA_FILE_PATH
 
 import os
@@ -56,17 +56,6 @@ class DataValidation:
         except Exception as e:
             raise MyException(e, sys)
     
-
-    #For Reading Data
-    @staticmethod
-    def read_data(file_path:str)-> pd.DataFrame:
-        
-        try:
-            data = pd.read_csv(file_path)
-            return data
-        except Exception as e:
-            raise MyException(e, sys)
-
    
     #Run Data Validation
     def initiate_data_validation(self)-> DataValidationArtifact:
@@ -74,8 +63,8 @@ class DataValidation:
         try:
             validation_error_msg = ""
 
-            test_data,train_data = (DataValidation.read_data(file_path=self.data_ingestion_artifact.test_file_path),
-                                    DataValidation.read_data(file_path=self.data_ingestion_artifact.train_file_path))
+            test_data,train_data = (read_data(file_path=self.data_ingestion_artifact.test_file_path),
+                                    read_data(file_path=self.data_ingestion_artifact.train_file_path))
             
             #For Validating No of Columns in Test data
             status = self.validate_column_numbers(dataframe=test_data)

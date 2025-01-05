@@ -21,6 +21,7 @@ categorical_columns:
   - time_of_day
 
 drop_columns:
+  - _id
   - full_name
 
 # for data transformation

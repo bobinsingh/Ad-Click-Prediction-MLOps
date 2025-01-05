@@ -1,5 +1,6 @@
 import os
 import sys
+import pandas as pd
 
 import numpy as np
 import dill
@@ -10,9 +11,16 @@ from src.exceptions import MyException
 from src.logging import logging
 
 
+def read_data(file_path) -> pd.DataFrame:
+    try:
+        return pd.read_csv(file_path)
+    except Exception as e:
+        raise MyException(e, sys)
+    
+
 def read_yaml_file(file_path: str) -> dict:
     try:
-        with open(file_path, "rb") as yaml_file:
+        with open(file_path, "r") as yaml_file:
             return yaml.safe_load(yaml_file)
 
     except Exception as e:

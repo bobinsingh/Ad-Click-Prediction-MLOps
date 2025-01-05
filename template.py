@@ -44,7 +44,8 @@ list_of_files = [
 
     # Utilities
     f"{project_name}/utils/__init__.py",
-    f"{project_name}/utils/helpers.py",  
+    f"{project_name}/utils/helpers.py",
+    f"{project_name}/utils/transformation_utils.py",  
 
     # Testing and documentation
     f"{project_name}/tests/__init__.py",
