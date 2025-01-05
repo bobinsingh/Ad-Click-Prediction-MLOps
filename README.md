@@ -13,7 +13,6 @@ This project implements a complete MLOps pipeline for ad click prediction, incor
 - Ad Position
 - Browsing History
 - Time of Day
-- Click (Target Variable)
 
 ## 🏗️ Project Architecture
 
@@ -59,7 +58,7 @@ The project follows a modular and scalable architecture with the following compo
   - EC2 (Deployment)
 - **Docker** - Containerization
 - **GitHub Actions** - CI/CD Pipeline
-- **Flask** - Web Application
+- **FastAPI** - Web Application
 
 ## 🚀 Getting Started
 
@@ -104,7 +103,7 @@ export AWS_SECRET_ACCESS_KEY="your_secret_key"
 │   └── utils/            # Utility functions
 ├── static/                # Static files for web application
 ├── templates/             # HTML templates
-├── app.py                # Flask application
+├── app.py                # FastAPI application
 ├── Dockerfile            # Docker configuration
 ├── requirements.txt      # Project dependencies
 └── setup.py             # Project setup configuration
