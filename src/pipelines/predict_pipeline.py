@@ -54,7 +54,6 @@ class AdData:
             logging.info("Entered Get Ad Input Dataframe function")
             ad_input_dict = self.get_ad_data_as_dict()
             df = DataFrame(ad_input_dict)
-            logging.info("Input Columns Recieved: ",df.columns.to_list)
             logging.info("Exited Get Ad Input Dataframe function")
             return df
         

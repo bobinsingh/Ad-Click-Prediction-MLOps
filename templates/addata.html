@@ -3,59 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ad Data Prediction</title>
+    <title>User Ad Click Prediction</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Ad Data Prediction</h1>
+        <h1>User Ad Click Prediction</h1>
         <form method="POST" action="/">
             <!-- Gender -->
-            <label for="gender_Male">Gender:</label>
-            <select name="gender_Male" id="gender_Male">
-                <option value="0">Select</option>
-                <option value="1">Male</option>
-                <option value="0">Female</option>
-                <option value="0">Non-Binary</option>
+            <label for="gender">Gender:</label>
+            <select name="gender" id="gender" required>
+                <option value="" disabled selected>-- Select Gender --</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-Binary">Non-Binary</option>
             </select>
 
             <!-- Age -->
             <label for="age">Age:</label>
-            <input type="number" id="age" name="age" placeholder="Enter Age" required>
+            <input type="number" id="age" name="age" placeholder="Enter Age" required min="0">
 
             <!-- Device Type -->
-            <label for="device_type_Mobile">Device Type:</label>
-            <select name="device_type_Mobile" id="device_type_Mobile">
-                <option value="0">Select</option>
-                <option value="1">Mobile</option>
-                <option value="0">Tablet</option>
+            <label for="device_type">Device Type:</label>
+            <select name="device_type" id="device_type" required>
+                <option value="" disabled selected>-- Select Device Type --</option>
+                <option value="Desktop">Desktop</option>
+                <option value="Mobile">Mobile</option>
+                <option value="Tablet">Tablet</option>
             </select>
 
             <!-- Ad Position -->
-            <label for="ad_position_Side">Ad Position:</label>
-            <select name="ad_position_Side" id="ad_position_Side">
-                <option value="0">Select</option>
-                <option value="1">Side</option>
-                <option value="0">Top</option>
+            <label for="ad_position">Ad Position:</label>
+            <select name="ad_position" id="ad_position" required>
+                <option value="" disabled selected>-- Select Ad Position --</option>
+                <option value="Top">Top</option>
+                <option value="Side">Side</option>
+                <option value="Bottom">Bottom</option>
             </select>
 
             <!-- Browsing History -->
-            <label for="browsing_history_Entertainment">Browsing History:</label>
-            <select name="browsing_history_Entertainment" id="browsing_history_Entertainment">
-                <option value="0">Select</option>
-                <option value="1">Entertainment</option>
-                <option value="0">News</option>
-                <option value="0">Shopping</option>
-                <option value="0">Social Media</option>
+            <label for="browsing_history">Browsing History:</label>
+            <select name="browsing_history" id="browsing_history" required>
+                <option value="" disabled selected>-- Select Browsing History --</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Education">Education</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Social Media">Social Media</option>
+                <option value="News">News</option>
             </select>
 
             <!-- Time of Day -->
-            <label for="time_of_day_Evening">Time of Day:</label>
-            <select name="time_of_day_Evening" id="time_of_day_Evening">
-                <option value="0">Select</option>
-                <option value="1">Evening</option>
-                <option value="0">Morning</option>
-                <option value="0">Night</option>
+            <label for="time_of_day">Time of Day:</label>
+            <select name="time_of_day" id="time_of_day" required>
+                <option value="" disabled selected>-- Select Time of Day --</option>
+                <option value="Morning">Morning</option>
+                <option value="Afternoon">Afternoon</option>
+                <option value="Evening">Evening</option>
+                <option value="Night">Night</option>
             </select>
 
             <!-- Submit Button -->

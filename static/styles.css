@@ -5,18 +5,24 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px; /* Set a baseline font size for scaling */
+}
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 10px;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .container {
     width: 100%;
-    max-width: 600px;
+    max-width: 500px;
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -26,26 +32,26 @@ body {
 h1 {
     text-align: center;
     margin-bottom: 20px;
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 form {
     display: flex;
     flex-direction: column;
+    gap: 15px; /* Add consistent spacing between inputs */
 }
 
 label {
-    margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 1rem;
     color: #333;
 }
 
 input, select, button {
     padding: 10px;
-    margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 1rem;
+    width: 100%;
 }
 
 button {
@@ -53,6 +59,7 @@ button {
     color: white;
     cursor: pointer;
     border: none;
+    transition: background-color 0.3s;
 }
 
 button:hover {
@@ -62,12 +69,36 @@ button:hover {
 h2 {
     margin-top: 20px;
     text-align: center;
-    font-size: 18px;
+    font-size: 1.25rem;
     color: #333;
 }
 
 p {
     text-align: center;
-    font-size: 16px;
+    font-size: 1rem;
     color: #333;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 600px) {
+    html {
+        font-size: 14px; /* Adjust font size for smaller screens */
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    h2 {
+        font-size: 1rem;
+    }
+
+    input, select, button {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
 }
