@@ -44,6 +44,22 @@ class AdData:
 
         except Exception as e:
             raise MyException(e, sys) from e
+        
+
+    def get_ad_input_data_frame(self)-> DataFrame:
+        """
+        This function returns a DataFrame from AdData class input
+        """
+        try:
+            logging.info("Entered Get Ad Input Dataframe function")
+            ad_input_dict = self.get_ad_data_as_dict()
+            df = DataFrame(ad_input_dict)
+            logging.info("Input Columns Recieved: ",df.columns.to_list)
+            logging.info("Exited Get Ad Input Dataframe function")
+            return df
+        
+        except Exception as e:
+            raise MyException(e, sys) from e
 
 
     def get_ad_data_as_dict(self):
@@ -55,7 +71,7 @@ class AdData:
         try:
             input_data = {
                     "gender_Male": [self.gender_Male],
-                    "gender_Non_Binary": [self.gender_Non_Binary],
+                    "gender_Non-Binary": [self.gender_Non_Binary],
                     "age": [self.age],
                     "device_type_Mobile": [self.device_type_Mobile],
                     "device_type_Tablet": [self.device_type_Tablet],
@@ -64,7 +80,7 @@ class AdData:
                     "browsing_history_Entertainment": [self.browsing_history_Entertainment],
                     "browsing_history_News": [self.browsing_history_News],
                     "browsing_history_Shopping": [self.browsing_history_Shopping],
-                    "browsing_history_Social_Media": [self.browsing_history_Social_Media],
+                    "browsing_history_Social Media": [self.browsing_history_Social_Media],
                     "time_of_day_Evening": [self.time_of_day_Evening],
                     "time_of_day_Morning": [self.time_of_day_Morning],
                     "time_of_day_Night": [self.time_of_day_Night]
@@ -74,19 +90,6 @@ class AdData:
             logging.info("Exited get_ad_data_as_dict method as AdData class")
             return input_data
 
-        except Exception as e:
-            raise MyException(e, sys) from e
-        
-        
-    def get_ad_input_data_frame(self)-> DataFrame:
-        """
-        This function returns a DataFrame from AdData class input
-        """
-        try:
-            
-            ad_input_dict = self.get_ad_data_as_dict()
-            return DataFrame(ad_input_dict)
-        
         except Exception as e:
             raise MyException(e, sys) from e
 
