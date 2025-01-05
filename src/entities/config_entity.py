@@ -58,3 +58,18 @@ class ModelTrainerConfig:
     trained_model_parameters_path: str = os.path.join(model_trainer_dir, TRAINED_MODEL_DIR,TRAINED_MODEL_PARAMETERS)
     trained_model_metrics_path: str = os.path.join(model_trainer_dir, TRAINED_MODEL_DIR,TRAINED_MODEL_METRICS)
     model_config_file_path: str = MODEL_HYPERPARAMETERS_FILE_PATH
+
+
+#Model Evaluation Component Configs
+@dataclass
+class ModelEvaluationConfig:
+    changed_threshold_score: float = MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
+    bucket_name: str = MODEL_BUCKET_NAME
+    s3_model_key_path: str = S3_STORED_MODEL_FILE_NAME
+
+
+#Model Pusher Component Configs
+@dataclass
+class ModelPusherConfig:
+    bucket_name: str = MODEL_BUCKET_NAME
+    s3_model_key_path: str = S3_STORED_MODEL_FILE_NAME  

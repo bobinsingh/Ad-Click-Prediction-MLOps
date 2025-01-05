@@ -12,7 +12,7 @@ from src.entities.artifact_entity import DataTransformationArtifact, DataIngesti
 from src.exceptions import MyException
 from src.logging import logging
 from src.utils.helpers import save_object, save_numpy_array_data, read_yaml_file, read_data
-from src.utils.transformation_utils import fill_na_and_knn_impute, encode_categorical_features, drop_columns
+from src.utils.transformation_utils import FillNaAndKNNImpute, EncodeCategoricalFeatures, DropColumns
 
 
 class DataTransformation:
@@ -39,31 +39,31 @@ class DataTransformation:
         logging.info("Entered get_data_transformer_object method of DataTransformation class")
 
         try:
-            # Initialize transformers
-            numeric_transformer = StandardScaler()
-            min_max_scaler = MinMaxScaler()
-            logging.info("Transformers Initialized: StandardScaler-MinMaxScaler")
 
-            # Load schema configurations
-            num_features = self.schema_config['num_features']
-            mm_columns = self.schema_config['mm_columns']
-            logging.info("Cols loaded from schema.")
-
-            # Creating a preprocessor pipeline
-            preprocessor = ColumnTransformer(
-            transformers=[
-                ("StandardScaler", numeric_transformer, num_features),
-                ("MinMaxScaler", min_max_scaler, mm_columns)
+            # Preprocessor pipeline
+            preprocessor = Pipeline([
+                # Drop specified columns
+                ("drop_columns", DropColumns(schema_config=self.schema_config)),
                 
-            ],
-            remainder='passthrough'  # Leaves other columns as they are
-        )
-
-            # Wrapping everything in a single pipeline
-            final_pipeline = Pipeline(steps=[("Preprocessor", preprocessor)])
+                # Encode categorical features
+                ("encode_categorical", EncodeCategoricalFeatures(schema_config=self.schema_config)),
+                
+                # Fill missing values and KNN impute
+                ("fill_na_and_knn", FillNaAndKNNImpute(n_neighbors=self.data_transformation_config.knn_n_neighbours)),
+                
+                # Apply scaling transformations
+                ("scale_features", ColumnTransformer(
+                    transformers=[
+                        ("StandardScaler", StandardScaler(), self.schema_config["num_features"]),  # Standard scaling
+                        ("MinMaxScaler", MinMaxScaler(), self.schema_config["mm_columns"])  # Min-max scaling
+                    ],
+                    remainder="passthrough"  # Retain other columns as they are
+                ))
+            ])
             logging.info("Final Pipeline Ready!!")
             logging.info("Exited get_data_transformer_object method of DataTransformation class")
-            return final_pipeline
+            return preprocessor
+
 
         except Exception as e:
             logging.exception("Exception occurred in get_data_transformer_object method of DataTransformation class")
@@ -93,17 +93,6 @@ class DataTransformation:
             input_feature_test_df = test_df.drop(columns=[TARGET_COLUMN], axis=1)
             target_feature_test_df = test_df[TARGET_COLUMN]
             logging.info("Input and Target cols defined for both train and test df.")
-
-            # Apply custom transformations in specified sequence
-            input_feature_train_df = drop_columns(df=input_feature_train_df,schema_config=self.schema_config)
-            input_feature_train_df = encode_categorical_features(df=input_feature_train_df)
-            input_feature_train_df = fill_na_and_knn_impute(data=input_feature_train_df,n_neighbors= self.data_transformation_config.knn_n_neighbours)
-
-            input_feature_test_df = drop_columns(df=input_feature_test_df,schema_config=self.schema_config)
-            input_feature_test_df = encode_categorical_features(df=input_feature_test_df)
-            input_feature_test_df = fill_na_and_knn_impute(input_feature_test_df,n_neighbors= self.data_transformation_config.knn_n_neighbours)
-            
-            logging.info("Custom transformations applied to train and test data")
 
             logging.info("Starting data transformation")
             preprocessor = self.get_data_transformer_object()

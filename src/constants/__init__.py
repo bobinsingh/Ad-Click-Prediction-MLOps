@@ -44,3 +44,13 @@ TRAINED_MODEL_METRICS: str = "metrics.yaml"
 MODEL_HYPERPARAMETERS_FILE_PATH: str = os.path.join("configs", "model.yaml")
 
 
+#Model Evaluation related constants
+MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
+MODEL_BUCKET_NAME = "ad-click-mlops"
+MODEL_PUSHER_S3_KEY = "model-registry"
+S3_STORED_MODEL_FILE_NAME = "model.pkl"
+
+APP_HOST = "0.0.0.0"
+APP_PORT = 5000
+
+

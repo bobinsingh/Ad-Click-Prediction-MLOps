@@ -40,3 +40,19 @@ class ModelTrainerArtifact:
     trained_model_metrics_path:str
     trained_model_parameters_path:str 
     metric_artifact:ClassificationMetricArtifact      
+
+
+#For Model Evaluation
+@dataclass
+class ModelEvaluationArtifact:
+    is_model_accepted:bool
+    changed_accuracy:float
+    s3_model_path:str 
+    trained_model_path:str
+
+
+#For Model Pusher
+@dataclass
+class ModelPusherArtifact:
+    bucket_name:str
+    s3_model_path:str
