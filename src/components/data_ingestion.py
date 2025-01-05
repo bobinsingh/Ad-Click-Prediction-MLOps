@@ -51,7 +51,8 @@ class DataIngestion:
     def save_splitted_data_to_feature_store(self, dataframe: DataFrame)-> None:
         
         try:
-            train_data, test_data = train_test_split(dataframe, test_size=self.data_ingestion_config.train_test_split_ratio)
+            train_data, test_data = train_test_split(dataframe, test_size=self.data_ingestion_config.train_test_split_ratio,
+                                                     random_state=self.data_ingestion_config.split_random_state)
             logging.info("Performed train test split on the dataframe")
             logging.info("Exited split_data_as_train_test method of Data_Ingestion class")
             

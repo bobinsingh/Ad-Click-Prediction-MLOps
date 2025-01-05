@@ -25,6 +25,7 @@ class DataIngestionConfig:
     training_file_path: str = os.path.join(data_ingestion_dir, DATA_INGESTION_INGESTED_DIR, TRAIN_FILE_NAME)
     testing_file_path: str = os.path.join(data_ingestion_dir, DATA_INGESTION_INGESTED_DIR, TEST_FILE_NAME)
     train_test_split_ratio: float = DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO
+    split_random_state: int = SPLIT_RANDOM_STATE
     collection_name:str = DATA_INGESTION_COLLECTION_NAME
 
 
@@ -47,3 +48,13 @@ class DataTransformationConfig:
                                                      DATA_TRANSFORMATION_PREPROCESSING_OBJECT_DIR,
                                                      PREPROCSSING_OBJECT_FILE_NAME)
     knn_n_neighbours: int = IMPUTE_KNN_N_NEIGHBOURS
+
+
+#Model Trainer Component Configs
+@dataclass
+class ModelTrainerConfig:
+    model_trainer_dir: str = os.path.join(training_pipeline_config.artifact_dir, MODEL_TRAINER_DIR_NAME)
+    trained_model_file_path: str = os.path.join(model_trainer_dir, TRAINED_MODEL_DIR, TRAINED_MODEL_NAME)
+    trained_model_parameters_path: str = os.path.join(model_trainer_dir, TRAINED_MODEL_DIR,TRAINED_MODEL_PARAMETERS)
+    trained_model_metrics_path: str = os.path.join(model_trainer_dir, TRAINED_MODEL_DIR,TRAINED_MODEL_METRICS)
+    model_config_file_path: str = MODEL_HYPERPARAMETERS_FILE_PATH
