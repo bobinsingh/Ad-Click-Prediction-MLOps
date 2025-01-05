@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Data Prediction</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Ad Data Prediction</h1>
+        <form method="POST" action="/">
+            <!-- Gender -->
+            <label for="gender_Male">Gender:</label>
+            <select name="gender_Male" id="gender_Male">
+                <option value="0">Select</option>
+                <option value="1">Male</option>
+                <option value="0">Female</option>
+                <option value="0">Non-Binary</option>
+            </select>
+
+            <!-- Age -->
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" placeholder="Enter Age" required>
+
+            <!-- Device Type -->
+            <label for="device_type_Mobile">Device Type:</label>
+            <select name="device_type_Mobile" id="device_type_Mobile">
+                <option value="0">Select</option>
+                <option value="1">Mobile</option>
+                <option value="0">Tablet</option>
+            </select>
+
+            <!-- Ad Position -->
+            <label for="ad_position_Side">Ad Position:</label>
+            <select name="ad_position_Side" id="ad_position_Side">
+                <option value="0">Select</option>
+                <option value="1">Side</option>
+                <option value="0">Top</option>
+            </select>
+
+            <!-- Browsing History -->
+            <label for="browsing_history_Entertainment">Browsing History:</label>
+            <select name="browsing_history_Entertainment" id="browsing_history_Entertainment">
+                <option value="0">Select</option>
+                <option value="1">Entertainment</option>
+                <option value="0">News</option>
+                <option value="0">Shopping</option>
+                <option value="0">Social Media</option>
+            </select>
+
+            <!-- Time of Day -->
+            <label for="time_of_day_Evening">Time of Day:</label>
+            <select name="time_of_day_Evening" id="time_of_day_Evening">
+                <option value="0">Select</option>
+                <option value="1">Evening</option>
+                <option value="0">Morning</option>
+                <option value="0">Night</option>
+            </select>
+
+            <!-- Submit Button -->
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Display Prediction Result -->
+        {% if context %}
+            <h2>Prediction Result:</h2>
+            <p>{{ context }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -2,13 +2,16 @@ from src.entities.config_entity import ModelEvaluationConfig
 from src.entities.artifact_entity import ModelTrainerArtifact, DataIngestionArtifact, ModelEvaluationArtifact
 from sklearn.metrics import f1_score
 from src.exceptions import MyException
-from src.constants import TARGET_COLUMN
+from src.constants import TARGET_COLUMN,SCHEMA_FILE_PATH
+from src.utils.helpers import read_yaml_file
 from src.logging import logging
 import sys
 import pandas as pd
 from typing import Optional
 from src.entities.s3_config import CloudModelEstimator
 from dataclasses import dataclass
+from src.utils.transformation_utils import encode_categorical_features,drop_columns,fill_na_and_knn_impute
+from src.entities.config_entity import DataTransformationConfig
 
 @dataclass
 class EvaluateModelResponse:
@@ -21,11 +24,14 @@ class EvaluateModelResponse:
 class ModelEvaluation:
 
     def __init__(self, model_eval_config: ModelEvaluationConfig, data_ingestion_artifact: DataIngestionArtifact,
+                 data_transformation_config: DataTransformationConfig,
                  model_trainer_artifact: ModelTrainerArtifact):
         try:
             self.model_eval_config = model_eval_config
             self.data_ingestion_artifact = data_ingestion_artifact
             self.model_trainer_artifact = model_trainer_artifact
+            self.data_transformation_config = data_transformation_config
+            self.schema_config = read_yaml_file(file_path=SCHEMA_FILE_PATH)
         except Exception as e:
             raise MyException(e, sys) from e
         
@@ -64,6 +70,11 @@ class ModelEvaluation:
             test_df = pd.read_csv(self.data_ingestion_artifact.test_file_path)
             x, y = test_df.drop(TARGET_COLUMN, axis=1), test_df[TARGET_COLUMN]
             logging.info("Test data loaded and now transforming it for prediction...")
+
+             
+            x = drop_columns(df=x,schema_config=self.schema_config)
+            x = fill_na_and_knn_impute(df=x,n_neighbors=self.data_transformation_config.knn_n_neighbours)
+            x = encode_categorical_features(df=x)
 
             trained_model_f1_score = self.model_trainer_artifact.metric_artifact.f1_score
             logging.info(f"F1_Score for this model: {trained_model_f1_score}")
