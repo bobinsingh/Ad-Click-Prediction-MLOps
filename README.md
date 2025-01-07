@@ -93,7 +93,7 @@ export AWS_SECRET_ACCESS_KEY="your_secret_key"
 
 ```
 ├── artifacts/               # Training artifacts and model files
-├── notebooks/               # Jupyter notebooks for Pushing Data to MongoDB
+├── dataset/               # Contains a local copy of dataset used in this project
 ├── configs/                 # Contain Schema and Model config files
 ├── src/
 │   ├── components/         # Core pipeline components
