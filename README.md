@@ -2,6 +2,12 @@
 
 A robust end-to-end MLOps project that predicts whether a user will click on an advertisement based on various user behavioral and demographic features.
 
+## Training Pipeline Structure
+![Training Pipeline](Training pipeline.png)
+
+## Prediction Pipeline Structure
+![Prediction Pipeline](Prediction pipeline.png)
+
 ## 🌟 Project Overview
 
 This project implements a complete MLOps pipeline for ad click prediction, incorporating best practices in machine learning operations including automated data pipelines, data ingestion, data validation, data transforamtion, model training, evaluation, and deployment. The system uses MongoDB for data storage, AWS for model registry and deployment, Data Version Control and Performance tracking, and includes comprehensive CI/CD pipelines.
