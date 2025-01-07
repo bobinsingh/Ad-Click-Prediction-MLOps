@@ -104,7 +104,7 @@ export AWS_SECRET_ACCESS_KEY="your_secret_key"
 ├── src/
 |   ├── cloud/              # Contains files for AWS connection & storage
 │   ├── components/         # Core pipeline components
-│   ├── config/            # Configuration files for each component
+│   ├── config/            # Files relate to database
 │   ├── constants/         # Contains Central file for all Constants used
 │   ├── data/                # Contains project data handler
 │   ├── docs/               # Documents related to project
