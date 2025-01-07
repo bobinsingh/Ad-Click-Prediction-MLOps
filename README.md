@@ -3,10 +3,10 @@
 A robust end-to-end MLOps project that predicts whether a user will click on an advertisement based on various user behavioral and demographic features.
 
 ## Training Pipeline Structure
-![Training Pipeline](Training-pipeline.png)
+![Training Pipeline](src/docs/Training-pipeline.png)
 
 ## Prediction Pipeline Structure
-![Prediction Pipeline](Prediction-pipeline.png)
+![Prediction Pipeline](src/docs/Prediction-pipeline.png)
 
 ## 🌟 Project Overview
 
@@ -102,11 +102,17 @@ export AWS_SECRET_ACCESS_KEY="your_secret_key"
 ├── dataset/               # Contains a local copy of dataset used in this project
 ├── configs/                 # Contain Schema and Model config files
 ├── src/
+|   ├── cloud/              # Contains files for AWS connection & storage
 │   ├── components/         # Core pipeline components
-│   ├── configuration/      # Configuration utilities
-│   ├── entity/            # Entity definitions
-│   ├── exception/         # Custom exception handling
-│   ├── logger/           # Logging configuration
+│   ├── config/            # Configuration files for each component
+│   ├── constants/         # Contains Central file for all Constants used
+│   ├── data/                # Contains project data handler
+│   ├── docs/               # Documents related to project
+│   ├── entities/            # Contain Artifact & Config, and model related entities
+│   ├── exceptions/         # Custom exception handling
+│   ├── logging/           # Logging configuration
+│   ├── pipelines/         # Training & Prediction pipeline
+│   ├── tests/             # Test pipeline
 │   └── utils/            # Utility functions
 ├── static/                # Static files for web application
 ├── templates/             # HTML templates
