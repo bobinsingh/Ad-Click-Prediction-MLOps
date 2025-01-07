@@ -3,10 +3,10 @@
 A robust end-to-end MLOps project that predicts whether a user will click on an advertisement based on various user behavioral and demographic features.
 
 ## Training Pipeline Structure
-![Training Pipeline](Training pipeline.png)
+![Training Pipeline](Training-pipeline.png)
 
 ## Prediction Pipeline Structure
-![Prediction Pipeline](Prediction pipeline.png)
+![Prediction Pipeline](Prediction-pipeline.png)
 
 ## 🌟 Project Overview
 
