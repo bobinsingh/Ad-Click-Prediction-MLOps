@@ -3,6 +3,7 @@ artifact/
 Project_flow.md
 connection.txt
 Bob_accessKeys.csv
+ad-click-prediction.ipynb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
